@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>$1 = 1 Entry Giveaway | Dallas Off-Road</title>
+  <meta name="description" content="Every $1 spent = 1 entry. Track entries by invoice. Winner picked with a verifiable random draw." />
+  <style>
+    :root{
+      --bg:#07080b;
+      --card:#0e1117;
+      --card2:#121521;
+      --muted:#a6aab6;
+      --text:#f3f4f6;
+      --accent:#ff2b2b;
+      --accent2:#ffb020;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --glow: 0 0 28px rgba(255,43,43,.22);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(900px 520px at 15% 0%, rgba(255,43,43,.22), transparent 60%),
+        radial-gradient(900px 520px at 90% 10%, rgba(255,176,32,.12), transparent 55%),
+        radial-gradient(900px 520px at 70% 85%, rgba(255,43,43,.10), transparent 60%),
+        linear-gradient(180deg, #06070a 0%, #0a0c12 100%);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:inherit}
+    .wrap{max-width:1150px;margin:0 auto;padding:28px 18px 70px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:46px;height:46px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(255,43,43,.95), rgba(255,176,32,.65));
+      box-shadow: var(--shadow), var(--glow);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo:after{
+      content:""; position:absolute; inset:-40%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      transform: rotate(25deg);
+      animation: sheen 4.2s linear infinite;
+    }
+    @keyframes sheen{ 0%{transform:translateX(-40%) rotate(25deg)} 100%{transform:translateX(40%) rotate(25deg)} }
+
+    .brand b{letter-spacing:.6px;text-transform:uppercase}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border:1px solid var(--border);
+      border-radius:999px;background:rgba(255,255,255,.03);
+      color:var(--muted);font-size:13px
+    }
+    .hero{display:grid;grid-template-columns: 1.2fr .8fr;gap:16px;align-items:stretch;margin-top:10px}
+    .card{
+      background:rgba(14,17,23,.76);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      transform: translateY(0);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .card:hover{transform: translateY(-2px);border-color: rgba(255,43,43,.35)}
+    .card .pad{padding:22px}
+    h1{font-size:42px;line-height:1.05;margin:0 0 12px}
+    .sub{color:var(--muted);font-size:16px;margin:0 0 18px;max-width:60ch}
+    .ctaRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 14px;border-radius:12px;border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      text-decoration:none;font-weight:760;letter-spacing:.3px;
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(255,43,43,.98), rgba(255,43,43,.55));
+      border-color: rgba(255,43,43,.38);
+      color:#0b0c10;
+      box-shadow: var(--glow);
+    }
+    .btn.secondary{
+      background: linear-gradient(135deg, rgba(255,176,32,.92), rgba(255,176,32,.40));
+      border-color: rgba(255,176,32,.35);
+      color:#0b0c10;
+    }
+    .btn:hover{transform: translateY(-1px);filter:brightness(1.06)}
+    .grid{display:grid;grid-template-columns: repeat(3, 1fr);gap:14px;margin-top:16px}
+    .mini{padding:16px;border-radius:16px;border:1px solid var(--border);background:rgba(255,255,255,.03)}
+    .mini h3{margin:0 0 6px;font-size:15px}
+    .mini p{margin:0;color:var(--muted);font-size:14px}
+
+    .calc{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+    label{font-size:13px;color:var(--muted)}
+    input, select, textarea{
+      width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--border);
+      background:rgba(0,0,0,.35);color:var(--text);font-size:16px;outline:none
+    }
+    textarea{min-height:90px;resize:vertical}
+    .result{padding:14px 14px;border-radius:14px;background:rgba(255,43,43,.10);border:1px solid rgba(255,43,43,.22);font-weight:800;}
+    .result small{display:block;color:var(--muted);font-weight:650;margin-top:4px}
+    .section{margin-top:18px}
+    .section h2{margin:0 0 10px;font-size:18px}
+    .rules{color:var(--muted);font-size:14px}
+    .rules ul{margin:10px 0 0;padding-left:18px}
+    .rules li{margin:6px 0}
+    .footer{margin-top:22px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;color:var(--muted);font-size:13px}
+    .note{font-size:13px;color:var(--muted);border-left:3px solid rgba(255,176,32,.55);padding-left:10px;margin-top:10px}
+
+    .statsGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .bigNum{font-size:28px;font-weight:900;letter-spacing:.4px}
+    .progressWrap{margin-top:10px}
+    .bar{height:14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--border);overflow:hidden}
+    .bar > i{display:block;height:100%;width:0%;background:linear-gradient(90deg, rgba(255,43,43,.95), rgba(255,176,32,.80));box-shadow: var(--glow);transition: width .7s ease}
+    .barMeta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-top:6px}
+
+    .ticker{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .tag{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--muted);font-size:13px}
+
+    .leader{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.03);margin:8px 0}
+    .leader b{color:var(--text)}
+
+    .strip{display:flex;gap:12px;overflow:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+    .quote{min-width:320px;scroll-snap-align:start;padding:14px 14px;border-radius:16px;border:1px solid var(--border);background:rgba(255,255,255,.03)}
+    .quote p{margin:0 0 8px;color:var(--text)}
+    .quote small{color:var(--muted)}
+
+    .adminLink{opacity:.9}
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      h1{font-size:36px}
+      .grid{grid-template-columns:1fr}
+      .statsGrid{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>Dallas Off-Road</b><br/>
+          <span class="pill">Giveaway • $1 = 1 Entry • Dallas, TX</span>
+        </div>
+      </div>
+      <div class="pill" id="datesPill">Entry Period: <b style="color:var(--text);margin-left:6px">Loading…</b></div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <div class="pad">
+          <h1>Every <span style="color:var(--accent)">$1</span> you spend = <span style="color:var(--accent2)">1 entry</span>.</h1>
+          <p class="sub">
+            Spend on parts, labor, installs — and you automatically earn entries toward the prize.
+            Winner is selected using a verifiable random draw on livestream.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn primary" href="#how">How it Works</a>
+            <a class="btn secondary" href="#enter">Get Entries / Book Now</a>
+            <a class="btn" href="#rules">Official Rules</a>
+            <a class="btn" href="/draw.html">Live Draw Page</a>
+          </div>
+
+          <div class="grid">
+            <div class="mini">
+              <h3>Simple math</h3>
+              <p>$250 invoice = 250 entries.</p>
+            </div>
+            <div class="mini">
+              <h3>Tracked by invoice</h3>
+              <p>We log entries using your invoice number.</p>
+            </div>
+            <div class="mini">
+              <h3>Verifiable draw</h3>
+              <p>We use a public randomness beacon + recorded draw.</p>
+            </div>
+          </div>
+
+          <p class="note">Prize: <b data-prize>Loading…</b></p>
+
+          <div class="section" id="how">
+            <h2>How it works</h2>
+            <div class="rules">
+              <ul>
+                <li><b>1 entry per $1 spent</b> (pre-tax, after discounts; rounded down).</li>
+                <li>Eligible purchases during the entry period only.</li>
+                <li>Entries tracked by invoice and stored in an entry log.</li>
+                <li>Winner selected on livestream using a <b>verifiable random draw</b>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section" id="live">
+            <h2>Live stats</h2>
+            <div class="statsGrid">
+              <div class="mini"><div class="bigNum" id="statEntries">0</div><p>Total entries</p></div>
+              <div class="mini"><div class="bigNum" id="statSpend">$0</div><p>Eligible spend</p></div>
+              <div class="mini"><div class="bigNum" id="statPeople">0</div><p>Participants</p></div>
+              <div class="mini"><div class="bigNum" id="statDays">—</div><p>Days remaining</p></div>
+            </div>
+
+            <div class="progressWrap">
+              <div class="bar"><i id="progressBar"></i></div>
+              <div class="barMeta">
+                <span>Progress to <b id="goalText">$500,000</b> total spend</span>
+                <span><b id="progressPct">0%</b></span>
+              </div>
+            </div>
+
+            <div class="ticker" id="ticker"></div>
+          </div>
+
+          <div class="section" id="leaderboardSection">
+            <h2>Leaderboard</h2>
+            <div id="leaderboard"></div>
+            <p class="note">Updated automatically from invoice exports. Initials shown for privacy.</p>
+          </div>
+
+          <div class="section" id="testimonials">
+            <h2>Customer shoutouts</h2>
+            <div class="strip" id="testimonialStrip"></div>
+          </div>
+
+          <div class="section" id="ig">
+            <h2>Watch the giveaway announcement</h2>
+            <div class="rules">Drop your Instagram Reel link in Admin → Settings and it will embed here.</div>
+            <div id="igEmbed" style="margin-top:12px"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card" id="enter">
+        <div class="pad">
+          <h2 style="margin:0 0 10px">Entry Calculator</h2>
+          <p class="sub" style="margin:0 0 14px">Type the eligible amount and see how many entries you’d get.</p>
+
+          <div class="calc">
+            <div>
+              <label for="amount">Eligible Spend Amount ($)</label>
+              <input id="amount" inputmode="decimal" placeholder="e.g., 799.99" />
+            </div>
+            <div class="result" id="entriesBox">
+              Entries: <span id="entries">0</span>
+              <small>We count whole dollars only (no cents).</small>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Book / Contact</h2>
+            <div class="rules">
+              <ul>
+                <li><b>Call/Text:</b> <span id="phone">(214) 222-1323</span></li>
+                <li><b>Address:</b> <span id="address">11338 Emerald St, Dallas, TX 75229</span></li>
+              </ul>
+              <a class="btn primary" id="payLink" href="#" onclick="return false;">Pay Deposit / Book Now</a>
+              <p class="note adminLink">Shop admin: <a href="/admin.html">Upload invoices / edit settings</a></p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>No Purchase Necessary Entry (TX)</h2>
+            <div class="rules">If required, you can enter here without a purchase. Limit 1 per person per day.</div>
+
+            <form name="no-purchase-entry" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="margin-top:10px">
+              <input type="hidden" name="form-name" value="no-purchase-entry" />
+              <p hidden>
+                <label>Don’t fill this out: <input name="bot-field" /></label>
+              </p>
+
+              <div class="calc">
+                <div>
+                  <label>Full Name</label>
+                  <input type="text" name="fullName" required />
+                </div>
+                <div>
+                  <label>Email</label>
+                  <input type="email" name="email" required />
+                </div>
+                <div>
+                  <label>City, State</label>
+                  <input type="text" name="location" required />
+                </div>
+                <div>
+                  <label style="display:flex;gap:10px;align-items:center">
+                    <input type="checkbox" name="agree" required style="width:auto" />
+                    I agree to the official rules
+                  </label>
+                </div>
+                <button class="btn secondary" type="submit">Submit Free Entry</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card section" id="rules">
+      <div class="pad">
+        <h2 style="margin-top:0">Official Rules (template)</h2>
+        <div class="rules">
+          <ul>
+            <li><b>Promoter:</b> Dallas Off-Road (“Promoter”).</li>
+            <li><b>Eligibility:</b> Must be 18+ and able to claim prize in accordance with local laws.</li>
+            <li><b>How to enter:</b> Earn 1 entry per $1 spent on eligible purchases during the entry period (pre-tax, after discounts; rounded down).</li>
+            <li><b>Entry tracking:</b> Entries are tracked by invoice number and stored in an entry log.</li>
+            <li><b>Winner selection:</b> Promoter assigns entry numbers 1 to N and draws one number using a verifiable random draw on a recorded live stream.</li>
+            <li><b>Alternates:</b> Promoter may draw alternate winners if winner is ineligible or unresponsive.</li>
+            <li><b>Refunds:</b> Refunded or charged-back purchases remove associated entries.</li>
+            <li><b>Prize:</b> <span data-prize>Loading…</span> (no cash value, non-transferable unless stated).</li>
+            <li><b>Platform disclaimer:</b> Not sponsored, endorsed, or administered by Instagram/Facebook/TikTok.</li>
+          </ul>
+          <p class="note">Legal note: This page is a template. For higher-value prizes, confirm Texas compliance with counsel.</p>
+        </div>
+
+        <div class="footer">
+          <div>© <span id="year"></span> Dallas Off-Road • All rights reserved</div>
+          <div>Transparent giveaway tracking • <a href="/draw.html">Live drawing page</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // --- Entry calculator ---
+    const amountEl = document.getElementById('amount');
+    const entriesEl = document.getElementById('entries');
+
+    function calcEntries() {
+      const raw = (amountEl.value || '').replace(/[^0-9.]/g,'');
+      const num = Number(raw);
+      if (!isFinite(num) || num <= 0) { entriesEl.textContent = '0'; return; }
+      const entries = Math.floor(num);
+      entriesEl.textContent = entries.toLocaleString();
+    }
+    amountEl.addEventListener('input', calcEntries);
+
+    // --- Animated counters ---
+    function animateNumber(el, to, opts={}){
+      const from = Number((el.getAttribute('data-val')||'0').replace(/[^0-9.-]/g,'')) || 0;
+      const start = performance.now();
+      const dur = opts.duration ?? 850;
+      const fmt = opts.format ?? ((v)=>String(Math.round(v)));
+      function tick(t){
+        const p = Math.min(1, (t-start)/dur);
+        const eased = 1 - Math.pow(1-p, 3);
+        const val = from + (to-from)*eased;
+        el.textContent = fmt(val);
+        if (p < 1) requestAnimationFrame(tick);
+        else el.setAttribute('data-val', String(to));
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function moneyFmt(v){
+      return "$" + Math.round(v).toLocaleString();
+    }
+
+    async function loadStats(){
+      try{
+        const res = await fetch('/api/stats', { cache: 'no-store' });
+        const data = await res.json();
+
+        // Settings
+        const pill = document.getElementById('datesPill');
+        pill.innerHTML = `Entry Period: <b style="color:var(--text);margin-left:6px">${data.settings.entryPeriodText}</b>`;
+
+        document.querySelectorAll('[data-prize]').forEach(el => el.textContent = data.settings.prizeName);
+
+        const goal = data.settings.goalSpend || 500000;
+        document.getElementById('goalText').textContent = "$" + goal.toLocaleString();
+
+        // Stats
+        animateNumber(document.getElementById('statEntries'), data.totals.totalEntries, { format:(v)=>Math.round(v).toLocaleString() });
+        animateNumber(document.getElementById('statSpend'), data.totals.totalSpend, { format: moneyFmt });
+        animateNumber(document.getElementById('statPeople'), data.totals.participants, { format:(v)=>Math.round(v).toLocaleString() });
+        document.getElementById('statDays').textContent = data.totals.daysRemaining;
+
+        // Progress bar
+        const pct = goal > 0 ? Math.min(100, (data.totals.totalSpend/goal)*100) : 0;
+        document.getElementById('progressBar').style.width = pct.toFixed(2) + '%';
+        document.getElementById('progressPct').textContent = pct.toFixed(1) + '%';
+
+        // Ticker tags
+        const ticker = document.getElementById('ticker');
+        ticker.innerHTML = '';
+        const tags = [
+          `Draw: ${data.settings.drawDateText}`,
+          `Updated: ${new Date(data.totals.updatedAt).toLocaleString()}`,
+          `Invoices: ${data.totals.invoiceCount.toLocaleString()}`,
+        ];
+        tags.forEach(t => {
+          const s = document.createElement('span');
+          s.className = 'tag';
+          s.textContent = t;
+          ticker.appendChild(s);
+        });
+
+        // Leaderboard
+        const lb = document.getElementById('leaderboard');
+        lb.innerHTML = '';
+        (data.leaderboard || []).slice(0, 10).forEach((row, idx) => {
+          const div = document.createElement('div');
+          div.className = 'leader';
+          div.innerHTML = `<div><b>#${idx+1} ${row.label}</b><div style="color:var(--muted);font-size:13px">${row.invoices} invoices</div></div><div style="text-align:right"><b>${row.entries.toLocaleString()}</b><div style="color:var(--muted);font-size:13px">entries</div></div>`;
+          lb.appendChild(div);
+        });
+
+        // Testimonials
+        const strip = document.getElementById('testimonialStrip');
+        strip.innerHTML = '';
+        (data.testimonials || []).forEach(q => {
+          const c = document.createElement('div');
+          c.className = 'quote';
+          c.innerHTML = `<p>“${q.text}”</p><small>— ${q.name}</small>`;
+          strip.appendChild(c);
+        });
+
+        // Instagram embed
+        const ig = document.getElementById('igEmbed');
+        ig.innerHTML = '';
+        if (data.settings.instagramReelUrl && data.settings.instagramReelUrl.includes('instagram.com')){
+          const bq = document.createElement('blockquote');
+          bq.className = 'instagram-media';
+          bq.setAttribute('data-instgrm-permalink', data.settings.instagramReelUrl);
+          bq.setAttribute('data-instgrm-version', '14');
+          ig.appendChild(bq);
+          const s = document.createElement('script');
+          s.async = true;
+          s.src = '//www.instagram.com/embed.js';
+          ig.appendChild(s);
+        } else {
+          ig.innerHTML = '<div class="mini">Add your Instagram reel URL in Admin → Settings to show it here.</div>';
+        }
+
+        // Deposit link
+        const payBtn = document.getElementById('payLink');
+        if (data.settings.payLink && data.settings.payLink.startsWith('http')) {
+          payBtn.href = data.settings.payLink;
+          payBtn.onclick = null;
+          payBtn.target = "_blank";
+          payBtn.rel = "noopener";
+        } else {
+          payBtn.style.opacity = ".65";
+          payBtn.title = "Add your payment link in Admin → Settings";
+        }
+
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    loadStats();
+    setInterval(loadStats, 30000);
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

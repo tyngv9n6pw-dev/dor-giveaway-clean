@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin | Dallas Off-Road Giveaway</title>
+  <meta name="robots" content="noindex" />
+  <style>
+    :root{--bg:#07080b;--card:#0e1117;--muted:#a6aab6;--text:#f3f4f6;--accent:#ff2b2b;--accent2:#ffb020;--border:rgba(255,255,255,.10);--shadow:0 18px 60px rgba(0,0,0,.55);--glow:0 0 28px rgba(255,43,43,.22)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(900px 520px at 15% 0%, rgba(255,43,43,.22), transparent 60%),radial-gradient(900px 520px at 90% 10%, rgba(255,176,32,.12), transparent 55%),linear-gradient(180deg,#06070a 0%,#0a0c12 100%);color:var(--text)}
+    a{color:inherit}
+    .wrap{max-width:1050px;margin:0 auto;padding:26px 18px 70px}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:13px}
+    .card{margin-top:14px;background:rgba(14,17,23,.78);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+    .pad{padding:22px}
+    h1{margin:0 0 8px;font-size:26px;letter-spacing:.3px;text-transform:uppercase}
+    .sub{margin:0 0 16px;color:var(--muted)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .mini{padding:16px;border-radius:16px;border:1px solid var(--border);background:rgba(255,255,255,.03)}
+    label{font-size:13px;color:var(--muted)}
+    input, textarea, select{width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.35);color:var(--text);font-size:16px;outline:none}
+    textarea{min-height:140px;resize:vertical}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.04);text-decoration:none;font-weight:850;letter-spacing:.3px;transition:transform .12s ease,filter .12s ease;cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg, rgba(255,43,43,.98), rgba(255,43,43,.55));border-color:rgba(255,43,43,.38);color:#0b0c10;box-shadow:var(--glow)}
+    .btn.secondary{background:linear-gradient(135deg, rgba(255,176,32,.92), rgba(255,176,32,.40));border-color:rgba(255,176,32,.35);color:#0b0c10}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+    .ok{padding:10px 12px;border-radius:12px;border:1px solid rgba(124,255,178,.25);background:rgba(124,255,178,.08);color:#d9ffe9}
+    .warn{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,176,32,.25);background:rgba(255,176,32,.08);color:#fff2d9}
+    .bad{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,43,43,.25);background:rgba(255,43,43,.10);color:#ffe1e1}
+    code{color:#ffd9d9}
+    @media (max-width:900px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="pill"><b>Dallas Off-Road</b> • Giveaway Admin</div>
+      <div class="pill"><a href="/">← Back to landing page</a></div>
+    </div>
+
+    <div class="card">
+      <div class="pad">
+        <h1>Settings</h1>
+        <p class="sub">These settings drive the landing page + draw page. Optional: set <code>ADMIN_TOKEN</code> in Netlify env vars for protection.</p>
+
+        <div class="row">
+          <div class="mini">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div>
+                <label>Admin Token (optional)</label>
+                <input id="token" placeholder="Leave blank if not using" />
+              </div>
+              <div>
+                <label>Prize Name</label>
+                <input id="prizeName" />
+              </div>
+              <div>
+                <label>Entry Period Text</label>
+                <input id="entryPeriodText" />
+              </div>
+              <div>
+                <label>Draw Date Text</label>
+                <input id="drawDateText" />
+              </div>
+              <div>
+                <label>Deposit / Payment Link</label>
+                <input id="payLink" placeholder="https://..." />
+              </div>
+              <div>
+                <label>Instagram Reel URL (full link)</label>
+                <input id="instagramReelUrl" placeholder="https://www.instagram.com/reel/..." />
+              </div>
+              <div>
+                <label>Spend Goal (progress bar)</label>
+                <input id="goalSpend" inputmode="numeric" placeholder="500000" />
+              </div>
+              <button class="btn primary" id="saveSettings">Save Settings</button>
+              <div id="settingsMsg"></div>
+            </div>
+          </div>
+
+          <div class="mini">
+            <h2 style="margin:0 0 10px;font-size:18px">Recommended Prizes</h2>
+            <div class="sub" style="margin:0 0 10px">Use these in your posts:</div>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li><b>$2,000 OFF</b> your Dallas Off-Road build (Grand Prize)</li>
+              <li><b>$750 Shop Credit</b> (parts & accessories)</li>
+              <li><b>$300 Labor Credit</b> (install package)</li>
+            </ul>
+            <p class="sub" style="margin-top:12px">Tip: Keep it simple: <b>“$2,000 Off Your Build”</b>.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pad">
+        <h1>Import Shopmonkey Export</h1>
+        <p class="sub">Upload a CSV export (invoices). We’ll convert totals into entries and update stats + leaderboard.</p>
+
+        <div class="row">
+          <div class="mini">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div>
+                <label>Upload CSV file</label>
+                <input type="file" id="csvFile" accept=".csv,text/csv" />
+              </div>
+              <div>
+                <label>…or paste CSV text</label>
+                <textarea id="csvText" placeholder="Paste CSV here"></textarea>
+              </div>
+              <button class="btn secondary" id="importBtn">Import / Merge</button>
+              <div id="importMsg"></div>
+            </div>
+          </div>
+
+          <div class="mini">
+            <h2 style="margin:0 0 10px;font-size:18px">What columns does it need?</h2>
+            <div class="sub">Any export is fine as long as it includes these (names can vary):</div>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li>Invoice number (ex: <b>Invoice</b>, <b>Number</b>, <b>Invoice #</b>)</li>
+              <li>Total paid/total amount (ex: <b>Total</b>, <b>Grand Total</b>, <b>Amount</b>)</li>
+              <li>Customer name (optional but helps leaderboard)</li>
+              <li>Date (optional)</li>
+            </ul>
+            <p class="sub" style="margin-top:10px">The importer tries common header names automatically.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pad">
+        <h1>Testimonials (optional)</h1>
+        <p class="sub">Edit these anytime. One per line as: <code>Name | Quote</code></p>
+        <div class="mini">
+          <textarea id="testimonials"></textarea>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+            <button class="btn" id="saveTestimonials">Save Testimonials</button>
+            <div id="testMsg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    async function api(path, body){
+      const token = document.getElementById('token').value.trim();
+      const res = await fetch(path, {
+        method: 'POST',
+        headers: {
+          'content-type':'application/json',
+          ...(token ? {'x-admin-token': token} : {})
+        },
+        body: JSON.stringify(body)
+      });
+      const text = await res.text();
+      let json = null;
+      try{ json = JSON.parse(text); } catch { json = { ok: res.ok, raw: text }; }
+      if (!res.ok) throw new Error(json.error || json.raw || 'Request failed');
+      return json;
+    }
+
+    async function load(){
+      const s = await fetch('/api/stats', {cache:'no-store'}).then(r=>r.json());
+      document.getElementById('prizeName').value = s.settings.prizeName || '';
+      document.getElementById('entryPeriodText').value = s.settings.entryPeriodText || '';
+      document.getElementById('drawDateText').value = s.settings.drawDateText || '';
+      document.getElementById('payLink').value = s.settings.payLink || '';
+      document.getElementById('instagramReelUrl').value = s.settings.instagramReelUrl || '';
+      document.getElementById('goalSpend').value = String(s.settings.goalSpend || 500000);
+
+      const lines = (s.testimonials||[]).map(t => `${t.name} | ${t.text}`).join('\n');
+      document.getElementById('testimonials').value = lines;
+    }
+
+    document.getElementById('saveSettings').addEventListener('click', async () => {
+      const msg = document.getElementById('settingsMsg');
+      msg.textContent = '';
+      try{
+        const body = {
+          prizeName: document.getElementById('prizeName').value.trim(),
+          entryPeriodText: document.getElementById('entryPeriodText').value.trim(),
+          drawDateText: document.getElementById('drawDateText').value.trim(),
+          payLink: document.getElementById('payLink').value.trim(),
+          instagramReelUrl: document.getElementById('instagramReelUrl').value.trim(),
+          goalSpend: Number(String(document.getElementById('goalSpend').value).replace(/[^0-9]/g,'')) || 500000,
+        };
+        await api('/api/admin/settings', body);
+        msg.innerHTML = '<div class="ok">Saved ✅</div>';
+      } catch(e){
+        msg.innerHTML = `<div class="bad">${e.message}</div>`;
+      }
+    });
+
+    document.getElementById('saveTestimonials').addEventListener('click', async () => {
+      const msg = document.getElementById('testMsg');
+      msg.textContent = '';
+      try{
+        const raw = document.getElementById('testimonials').value;
+        const rows = raw.split(/\n+/).map(l=>l.trim()).filter(Boolean).map(l=>{
+          const [name, ...rest] = l.split('|');
+          return { name: (name||'').trim(), text: (rest.join('|')||'').trim() };
+        }).filter(x=>x.name && x.text);
+        await api('/api/admin/testimonials', { testimonials: rows });
+        msg.innerHTML = '<div class="ok">Saved ✅</div>';
+      } catch(e){
+        msg.innerHTML = `<div class="bad">${e.message}</div>`;
+      }
+    });
+
+    function readFileAsText(file){
+      return new Promise((resolve,reject)=>{
+        const r = new FileReader();
+        r.onload = () => resolve(String(r.result||''));
+        r.onerror = () => reject(new Error('Failed to read file'));
+        r.readAsText(file);
+      });
+    }
+
+    document.getElementById('importBtn').addEventListener('click', async () => {
+      const msg = document.getElementById('importMsg');
+      msg.textContent = '';
+      try{
+        let csv = document.getElementById('csvText').value.trim();
+        const f = document.getElementById('csvFile').files?.[0];
+        if (!csv && f) csv = (await readFileAsText(f)).trim();
+        if (!csv) throw new Error('Add a CSV file or paste CSV text first.');
+
+        const r = await api('/api/admin/import', { csv });
+        msg.innerHTML = `<div class="ok">Imported ✅ Added/updated invoices: <b>${r.upserted}</b>. Total invoices now: <b>${r.invoiceCount}</b>.</div>`;
+      } catch(e){
+        msg.innerHTML = `<div class="bad">${e.message}</div>`;
+      }
+    });
+
+    load().catch(e => console.error(e));
+  </script>
+</body>
+</html>
