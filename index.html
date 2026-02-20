@@ -142,8 +142,18 @@
   </style>
 </head>
 <body>
- <form name="giveaway-entry" method="POST" data-netlify="true">
+ <form name="giveaway-entry"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      action="/thanks.html">
+
   <input type="hidden" name="form-name" value="giveaway-entry">
+
+  <!-- Spam protection -->
+  <p style="display:none;">
+    <label>Don’t fill this out: <input name="bot-field" /></label>
+  </p>
 
   <h1>WIN A DALLAS OFF-ROAD BUILD 🔥</h1>
   <p>Every $1 = 1 Entry • Ask for John</p>
@@ -152,7 +162,20 @@
   <input type="email" name="email" placeholder="Email" required>
   <input type="tel" name="phone" placeholder="Phone" required>
 
+  <select name="entry_package" required>
+    <option value="10 entries - $10">10 entries - $10</option>
+    <option value="60 entries - $50 🔥">60 entries - $50 🔥</option>
+    <option value="150 entries - $100 🚀">150 entries - $100 🚀</option>
+  </select>
+
+  <label style="font-size:12px;">
+    <input type="checkbox" name="rules" required>
+    I agree to the giveaway rules
+  </label>
+
   <button type="submit">ENTER NOW</button>
+
+</form>
 </form>
   <div class="wrap">
     <div class="topbar">
